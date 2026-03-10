@@ -19,3 +19,11 @@ export interface ErrorProps {
   error: Error;
   reset: () => void;
 }
+
+export interface CartItem extends Product {
+  quantity: number;
+}
+
+export interface CartState {
+  items: CartItem[];
+}

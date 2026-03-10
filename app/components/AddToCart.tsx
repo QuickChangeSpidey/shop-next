@@ -1,24 +1,22 @@
 "use client";
 
-import { ProductProp } from "@/lib/types";
-import { useState } from "react";
+import { Product } from "@/lib/types";
+import { useCart } from "../context/CartContext";
 
-export default function AddToCart({ productName, price }: ProductProp) {
-  const [added, setAdded] = useState(false);
+interface Props {
+  product: Product;
+}
 
-  const handleClick = () => {
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
-  };
+export default function AddToCart({ product }: Props) {
+  const { state, dispatch } = useCart();
+  const itemInCart = state.items.find(i => i.id === product.id);
 
   return (
     <button
-      onClick={handleClick}
-      className={`mt-6 px-6 py-2 rounded-lg text-white transition ${
-        added ? "bg-green-600" : "bg-blue-600 hover:bg-blue-700"
-      }`}
+      onClick={() => dispatch({ type: "ADD_ITEM", product })}
+      className="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
     >
-      {added ? `✓ Added to cart!` : `Add to Cart — $${price}`}
+      {itemInCart ? `In Cart (${itemInCart.quantity})` : `Add to Cart — $${product.price}`}
     </button>
   );
 }

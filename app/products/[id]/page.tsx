@@ -17,7 +17,7 @@ export default async function ProductPage({ params }: Props) {
             <h1 className="text-3xl font-bold mt-1">{product.name}</h1>
             <p className="text-gray-600 mt-4">{product.description}</p>
             <p className="text-blue-600 text-2xl font-bold mt-4">${product.price}</p>
-            <AddToCart productName={product.name} price={product.price} />
+            <AddToCart product={product} key={product.id} />
         </main>
     );
 }
