@@ -1,6 +1,6 @@
 "use client";
-import { createContext, useContext, useReducer, ReactNode } from "react";
-import { Product, CartItem, CartState } from "@/lib/types";
+import { createContext, useReducer, ReactNode } from "react";
+import { Product, CartState } from "@/lib/types";
 
 type CartAction =
   | { type: "ADD_ITEM"; product: Product }
