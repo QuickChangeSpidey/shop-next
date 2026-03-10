@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useCart } from "../context/CartContext";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 export default function Navbar() {
-  const { state } = useCart();
+  const { state } = useContext(CartContext)!;
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -18,11 +19,11 @@ export default function Navbar() {
         </Link>
         <Link href="/cart" className="relative text-gray-600 hover:text-blue-600 transition">
           Cart
-          {totalItems > 0 && (
+          {totalItems > 0 ? (
             <span className="absolute -top-2 -right-4 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
               {totalItems}
             </span>
-          )}
+          ) : null}
         </Link>
       </div>
     </nav>

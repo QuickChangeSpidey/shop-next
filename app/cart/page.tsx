@@ -1,10 +1,10 @@
 "use client";
 
-import { useCart } from "../context/CartContext";
-
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 export default function CartPage() {
-  const { state, dispatch } = useCart();
+  const { state, dispatch } = useContext(CartContext)!;
 
   const total = state.items.reduce(
     (sum, item) => sum + item.price * item.quantity, 0

@@ -1,14 +1,15 @@
 "use client";
 
+import { useContext } from "react";
 import { Product } from "@/lib/types";
-import { useCart } from "../context/CartContext";
+import { CartContext } from "../context/CartContext";
 
 interface Props {
   product: Product;
 }
 
 export default function AddToCart({ product }: Props) {
-  const { state, dispatch } = useCart();
+  const { state, dispatch } = useContext(CartContext)!;
   const itemInCart = state.items.find(i => i.id === product.id);
 
   return (
