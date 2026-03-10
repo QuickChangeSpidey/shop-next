@@ -18,7 +18,7 @@ export default async function ProductsPage() {
         {products.map((product: Product) => (
           <Link href={`/products/${product.id}`} key={product.id}>
             <div className="border rounded-lg p-4 hover:shadow-md transition h-full">
-              <h2 className="font-semibold">{product.title}</h2>
+              <h2 className="font-semibold">{product.description}</h2>
               <p className="text-blue-600 mt-2">${product.price}</p>
             </div>
           </Link>
