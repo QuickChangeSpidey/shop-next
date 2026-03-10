@@ -14,3 +14,8 @@ export interface ProductProp {
   productName: string;
   price: number;
 }
+
+export interface ErrorProps {
+  error: Error;
+  reset: () => void;
+}
